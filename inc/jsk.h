@@ -1,4 +1,4 @@
-#ifndef JSK_INC_H
+﻿#ifndef JSK_INC_H
 #define JSK_INC_H
 
 #include "jsk_Utils.h"

@@ -1,4 +1,4 @@
-#ifndef JSK_QGLOBAL_H
+﻿#ifndef JSK_QGLOBAL_H
 #define JSK_QGLOBAL_H
 
 #include <QtCore/qglobal.h>

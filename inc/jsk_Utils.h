@@ -26,7 +26,7 @@ namespace JSK
 {
 namespace OperMode
 {
-const int Append = 1; // 添加
+const int Append = 1; // 添加或新建
 const int Change = 2; // 修改
 const int Delete = 4; // 删除
 };
