@@ -1,13 +1,13 @@
-#ifndef UTILS_H
+ï»¿#ifndef UTILS_H
 #define UTILS_H
+
+#include "jsk_qglobal.h"
 
 #include <QTextCodec>
 #include <QMessageBox>
 #include <QVariant>
 
-
 #include <QDateTime>
-
 
 #include <QString>
 #include <QStringList>
@@ -22,50 +22,39 @@ using namespace std;
 #define max(a,b)    (((a) > (b)) ? (a) : (b))
 #define min(a,b)    (((a) < (b)) ? (a) : (b))
 
-// ×Ö·û¼¯×ª»»
-inline QString QS(const char* s)
-{
-    return QTextCodec::codecForLocale()->toUnicode(s);
-}
-// ÏÔÊ¾ÎÄ±¾¶Ô»°¿ò
-inline void MsgBox(const QString& s)
-{
-    QMessageBox::information(NULL, "", s);
-}
-
 namespace JSK
 {
 namespace OperMode
 {
-const int Append = 1; // Ìí¼Ó
-const int Change = 2; // ĞŞ¸Ä
-const int Delete = 4; // É¾³ı
+const int Append = 1; // æ·»åŠ 
+const int Change = 2; // ä¿®æ”¹
+const int Delete = 4; // åˆ é™¤
 };
 
-// È¡²Ù×÷ÏµÍ³Ãû³Æ£¬½öÖ§³Ö Windows
-QString GetOSName();
-// È¡²Ù×÷ÏµÍ³µÄÓïÑÔ£¬½öÖ§³Ö Windows
-QString GetOSLanguage();
-// È¡Ö´ĞĞÎÄ¼şµÄ°æ±¾£¬½öÖ§³Ö Windows
-QString GetFileVersion(const QString& exeFile);
-// Windows ÓòÓÃ»§µÇÂ¼£¬½öÖ§³Ö Windows
-bool UserLogin(const QString& Domain, const QString& UserID, const QString& Password);
+// å–æ“ä½œç³»ç»Ÿåç§°ï¼Œä»…æ”¯æŒ Windows
+JSK_EXPORT QString GetOSName();
+// å–æ“ä½œç³»ç»Ÿçš„è¯­è¨€ï¼Œä»…æ”¯æŒ Windows
+JSK_EXPORT QString GetOSLanguage();
+// å–æ‰§è¡Œæ–‡ä»¶çš„ç‰ˆæœ¬ï¼Œä»…æ”¯æŒ Windows
+JSK_EXPORT QString GetFileVersion(const QString& exeFile);
+// Windows åŸŸç”¨æˆ·ç™»å½•ï¼Œä»…æ”¯æŒ Windows
+JSK_EXPORT bool UserLogin(const QString& Domain, const QString& UserID, const QString& Password);
 
-// °Ñ k/v ½á¹¹µÄÎÄ±¾×ª»»Îª map ½á¹¹
-QHash<QString, QString> StringToMap(const QString& mapStrings);
-QHash<QString, QString> StringToMap(const QStringList& mapStrings);
-// ·µ»Øµ±Ç°Ê±¼ä×Ö·û´®£ºyyyy-MM-dd HH:mm:ss.zzz
-QString NowText();
-// ·µ»Øµ±Ç°Ê±¼ä×Ö·û´®£ºyyyy-MM-dd HH:mm:ss
-QString NowText2();
+// æŠŠ k/v ç»“æ„çš„æ–‡æœ¬è½¬æ¢ä¸º map ç»“æ„
+JSK_EXPORT QHash<QString, QString> StringToMap(const QString& mapStrings);
+JSK_EXPORT QHash<QString, QString> StringToMap(const QStringList& mapStrings);
+// è¿”å›å½“å‰æ—¶é—´å­—ç¬¦ä¸²ï¼šyyyy-MM-dd HH:mm:ss.zzz
+JSK_EXPORT QString NowText();
+// è¿”å›å½“å‰æ—¶é—´å­—ç¬¦ä¸²ï¼šyyyy-MM-dd HH:mm:ss
+JSK_EXPORT QString NowText2();
 
-// ·µ»Ø18Î»ÉíÎ»Ö¤µÄ×îºóÒ»Î»Ğ£ÑéÂë
-char getIDCardVerifyCode(const QByteArray& id);
+// è¿”å›18ä½èº«ä½è¯çš„æœ€åä¸€ä½æ ¡éªŒç 
+JSK_EXPORT char getIDCardVerifyCode(const QByteArray& id);
 
-// ×ª»»×Ö·û´®ÎªÈÕÆÚÊ±¼ä
-QDateTime DateTimefrom(const QString& s);
+// è½¬æ¢å­—ç¬¦ä¸²ä¸ºæ—¥æœŸæ—¶é—´
+JSK_EXPORT QDateTime DateTimefrom(const QString& s);
 
-char        typeFrom(QVariant::Type type);
+JSK_EXPORT char        typeFrom(QVariant::Type type);
 inline char typeFrom(const QVariant& v)
 {
     return typeFrom(v.type());
@@ -78,29 +67,26 @@ inline void addField(QByteArray& fieldBytes, const QString& name, const QVariant
             .append(QByteArray::number(bytes.length())).append('\0')
             .append(bytes);
 }
-QHash<QString, QByteArray> getFields(const QByteArray& fieldBytes);
+JSK_EXPORT QHash<QString, QByteArray> getFields(const QByteArray& fieldBytes);
 
-int find(const QStringList& ss, const QString& s);
+JSK_EXPORT int find(const QStringList& ss, const QString& s);
 
-QString uniqueFileName(const QString& dir, const QString& fileTemplate, const QString& suffix="");
+JSK_EXPORT QString uniqueFileName(const QString& dir, const QString& fileTemplate, const QString& suffix="");
 
-int findOf(const QStringList& list, const QString& key);
+JSK_EXPORT int findOf(const QStringList& list, const QString& key);
 
-bool filter(const QString& text, const QStringList& filters);
+JSK_EXPORT bool filter(const QString& text, const QStringList& filters);
 
-QDateTime GetComplieDateTime();
+JSK_EXPORT QDateTime GetComplieDateTime();
 
-QDateTime   toDateTime(const QString& text);
-int         splitHumanName(QString full, QString& sur, QString& real, QString& english);
-QString     getTextByIndex(const char* strings, int index);
-bool        loadFromFile(QString& context, const QString& filename);
+JSK_EXPORT QDateTime toDateTime(const QString& text);
+JSK_EXPORT int       splitHumanName(QString full, QString& sur, QString& real, QString& english);
+JSK_EXPORT QString   getTextByIndex(const char* strings, int index);
+JSK_EXPORT bool      loadFromFile(QString& context, const QString& filename);
 
 }; // namespace JSK;
 
-inline int     iif(bool logic, int v1, int v2=0) { return logic ? v1 : v2; }
-inline QString iif(bool logic, const QString& v1, const QString& v2="") { return logic ? v1 : v2; }
-
-class DBFields
+class JSK_EXPORT DBFields
 {
 public:
     DBFields() {}
@@ -125,6 +111,20 @@ private:
     QStringList m_keys;
 };
 
+
+// å­—ç¬¦é›†è½¬æ¢
+inline QString QS(const char* s)
+{
+    return QTextCodec::codecForLocale()->toUnicode(s);
+}
+// æ˜¾ç¤ºæ–‡æœ¬å¯¹è¯æ¡†
+inline void MsgBox(const QString& s)
+{
+    QMessageBox::information(NULL, "", s);
+}
+inline int     iif(bool logic, int v1, int v2=0) { return logic ? v1 : v2; }
+inline QString iif(bool logic, const QString& v1, const QString& v2="") { return logic ? v1 : v2; }
+
 inline void printLocal(const char* file, int line, const QString& text="")
 {
     cout<<QDateTime::currentDateTime().toString("yyyy/MM/dd HH:mm:ss->").toLocal8Bit().data()<<file<<"("<<line<<"): "<<text.toLocal8Bit().data()<<endl;
@@ -133,7 +133,6 @@ inline void printLocal(const char* file, int line, int v)
 {
     printLocal(file, line, QString::number(v));
 }
-
 
 #define PRINT_STEP     printLocal(__FILE__, __LINE__);
 #define PRINT_TEXT(x)  printLocal(__FILE__, __LINE__, x);

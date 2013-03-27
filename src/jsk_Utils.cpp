@@ -1,4 +1,4 @@
-#include "jsk_Utils.h"
+ï»¿#include "jsk_Utils.h"
 
 #include <QTextStream>
 #include <QTextCodec>
@@ -145,19 +145,19 @@ char JSK::getIDCardVerifyCode(const QByteArray& id)
     char ret = '\0';
     if ( id.length() >= 17 )
     {
-        // ¼ÓÈ¨³Ë»ıÇóºÍ³ıÒÔ11µÄÓàÊıËù¶ÔÓ¦µÄĞ£ÑéÊı
+        // åŠ æƒä¹˜ç§¯æ±‚å’Œé™¤ä»¥11çš„ä½™æ•°æ‰€å¯¹åº”çš„æ ¡éªŒæ•°
         const char verifyMap[] = "10X98765432";
-        // ¼ÓÈ¨Òò×Ó
+        // åŠ æƒå› å­
         const int factor[] = { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1 };
 
-        int Sum = 0;  //¼ÓÈ¨³Ë»ıÇóºÍ
+        int Sum = 0;  //åŠ æƒä¹˜ç§¯æ±‚å’Œ
         for( int i=0;i<17;i++ )
         {
             char c = id[i];
 
-            Sum += (c-'0') * factor[i]; // ¼ÓÈ¨³Ë»ıÇóºÍ
+            Sum += (c-'0') * factor[i]; // åŠ æƒä¹˜ç§¯æ±‚å’Œ
         }
-        ret = verifyMap[Sum % 11]; // È¡Ä£
+        ret = verifyMap[Sum % 11]; // å–æ¨¡
     }
     return ret;
 }
@@ -427,19 +427,19 @@ QDateTime JSK::toDateTime(const QString& text)
     return ret;
 }
 
-/// ·Ö½âĞÕÃû£¨µ¥¡¢¸´ĞÕ¡¢Ó¢ÎÄ£©
+/// åˆ†è§£å§“åï¼ˆå•ã€å¤å§“ã€è‹±æ–‡ï¼‰
 int JSK::splitHumanName(QString full, QString& sur, QString& real, QString& english)
 {
     QString surs = QTextCodec::codecForLocale()->toUnicode(
-                               "Å·Ñô\nÌ«Ê·\n¶ËÄ¾\nÉÏ¹Ù\nË¾Âí\n¶«·½\n¶À¹Â\nÄÏ¹¬\nÍòÙ¹\n"
-                               "ÎÅÈË\nÏÄºî\nÖî¸ğ\nÎ¾³Ù\n¹«Ñò\nºÕÁ¬\nå£Ì¨\n»Ê¸¦\n×ÚÕş\n"
-                               "å§Ñô\n¹«Ò±\nÌ«Êå\nÉêÍÀ\n¹«Ëï\nÄ½Èİ\nÖÙËï\nÖÓÀë\n³¤Ëï\n"
-                               "ÓîÎÄ\nË¾Í½\nÏÊÓÚ\nË¾¿Õ\nãÌÇğ\n×Ó³µ\nØÁ¹Ù\nË¾¿Ü\nÎ×Âí\n"
-                               "¹«Î÷\nò§Ëï\nÈÀæá\n¹«Á¼\nÆáµñ\nÀÖÕı\nÔ×¸¸\n¹ÈÁº\nÍØ°Ï\n"
-                               "¼Ğ¹È\nĞùÔ¯\nÁîºü\n¶Î¸É\n°ÙÀï\nºôÑÓ\n¶«¹ù\nÄÏÃÅ\nÑòÉà\n"
-                               "Î¢Éú\n¹«»§\n¹«Óñ\n¹«ÒÇ\nÁºÇğ\n¹«ÖÙ\n¹«ÉÏ\n¹«ÃÅ\n¹«É½\n"
-                               "¹«¼á\n×óÇğ\n¹«²®\nÎ÷ÃÅ\n¹«×æ\nµÚÎå\n¹«³Ë\n¹áÇğ\n¹«ğª\n"
-                               "ÄÏÈÙ\n¶«Àï\n¶«¹¬\nÖÙ³¤\n×ÓÊé\n×ÓÉ£\n¼´Ä«\n´ïŞÉ\nñÒÊ¦\n");
+                               "æ¬§é˜³\nå¤ªå²\nç«¯æœ¨\nä¸Šå®˜\nå¸é©¬\nä¸œæ–¹\nç‹¬å­¤\nå—å®«\nä¸‡ä¿Ÿ\n"
+                               "é—»äºº\nå¤ä¾¯\nè¯¸è‘›\nå°‰è¿Ÿ\nå…¬ç¾Š\nèµ«è¿\næ¾¹å°\nçš‡ç”«\nå®—æ”¿\n"
+                               "æ¿®é˜³\nå…¬å†¶\nå¤ªå”\nç”³å± \nå…¬å­™\næ…•å®¹\nä»²å­™\né’Ÿç¦»\né•¿å­™\n"
+                               "å®‡æ–‡\nå¸å¾’\né²œäº\nå¸ç©º\né—¾ä¸˜\nå­è½¦\näº“å®˜\nå¸å¯‡\nå·«é©¬\n"
+                               "å…¬è¥¿\né¢›å­™\nå£¤é©·\nå…¬è‰¯\næ¼†é›•\nä¹æ­£\nå®°çˆ¶\nè°·æ¢\næ‹“è·‹\n"
+                               "å¤¹è°·\nè½©è¾•\nä»¤ç‹\næ®µå¹²\nç™¾é‡Œ\nå‘¼å»¶\nä¸œéƒ­\nå—é—¨\nç¾ŠèˆŒ\n"
+                               "å¾®ç”Ÿ\nå…¬æˆ·\nå…¬ç‰\nå…¬ä»ª\næ¢ä¸˜\nå…¬ä»²\nå…¬ä¸Š\nå…¬é—¨\nå…¬å±±\n"
+                               "å…¬åš\nå·¦ä¸˜\nå…¬ä¼¯\nè¥¿é—¨\nå…¬ç¥–\nç¬¬äº”\nå…¬ä¹˜\nè´¯ä¸˜\nå…¬çš™\n"
+                               "å—è£\nä¸œé‡Œ\nä¸œå®«\nä»²é•¿\nå­ä¹¦\nå­æ¡‘\nå³å¢¨\nè¾¾å¥š\nè¤šå¸ˆ\n");
     QStringList doubleSurnames = surs.split("\n");
 
     full = full.trimmed();
@@ -448,7 +448,7 @@ int JSK::splitHumanName(QString full, QString& sur, QString& real, QString& engl
     if ( ! full.isEmpty() )
     {
         if ( full.length() != full.toLocal8Bit().length() )
-        {// ºº×Ö
+        {// æ±‰å­—
             foreach(QString s, doubleSurnames)
             {
                 if ( ! s.isEmpty() && full.startsWith(s) )
@@ -465,7 +465,7 @@ int JSK::splitHumanName(QString full, QString& sur, QString& real, QString& engl
             }
             real = full.mid(sur.length());
         }else
-        {// Ó¢ÎÄÃû
+        {// è‹±æ–‡å
             QStringList ss = full.split(" ", QString::SkipEmptyParts);
             english = "";
             for( int i=0;i<ss.count();i++ )
