@@ -1,5 +1,14 @@
-﻿#ifndef UTILS_H
-#define UTILS_H
+﻿// =====================================================================================================================
+// JSK Share library for Qt5
+//    Frame: Qt5.0.1
+// Compiler: VC2010
+// ---------------------------------------------------------------------------------------------------------------------
+//  Date       Author   Description
+//  2013.03.27 齐天小圣   初版
+// =====================================================================================================================
+
+#ifndef JSK4QT_UTILS_H
+#define JSK4QT_UTILS_H
 
 #include "jsk_qglobal.h"
 
@@ -138,4 +147,4 @@ inline void printLocal(const char* file, int line, int v)
 #define PRINT_TEXT(x)  printLocal(__FILE__, __LINE__, x);
 
 
-#endif // UTILS_H
+#endif // JSK4QT_UTILS_H
