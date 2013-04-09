@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/alignCenter.png</file>
+        <file>res/alignLeft.png</file>
+        <file>res/alignRight.png</file>
+        <file>res/alignTop.png</file>
+        <file>res/alignBottom.png</file>
+
+    </qresource>
+</RCC>
