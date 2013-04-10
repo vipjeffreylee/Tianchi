@@ -19,7 +19,7 @@ using namespace std;
 
 namespace Tianchi
 {
-QString Tianchi::GetOSName()
+QString GetOSName()
 {
     QString ret;
   #if defined(__WIN32__) || defined(_WIN32)
@@ -30,7 +30,7 @@ QString Tianchi::GetOSName()
     return ret;
 }
 
-QString Tianchi::GetOSLanguage()
+QString GetOSLanguage()
 {
     QString ret;
   #if defined(__WIN32__) || defined(_WIN32)
@@ -42,7 +42,7 @@ QString Tianchi::GetOSLanguage()
     return ret;
 }
 
-QString Tianchi::GetFileVersion(const QString& exeFile)
+QString GetFileVersion(const QString& exeFile)
 {
     QString ret = "";
 
@@ -73,7 +73,7 @@ QString Tianchi::GetFileVersion(const QString& exeFile)
     return ret;
 }
 
-bool Tianchi::UserLogin(const QString& Domain, const QString& UserID, const QString& Password)
+bool UserLogin(const QString& Domain, const QString& UserID, const QString& Password)
 {
     bool ret = false;
   #if defined(__WIN32__) || defined(_WIN32)
@@ -103,14 +103,14 @@ bool Tianchi::UserLogin(const QString& Domain, const QString& UserID, const QStr
     return ret;
 }
 
-QHash<QString, QString> Tianchi::StringToMap(const QString& mapStrings)
+QHash<QString, QString> StringToMap(const QString& mapStrings)
 {
     QStringList strings = mapStrings.split("\n", QString::SkipEmptyParts);
 
     return Tianchi::StringToMap(strings);
 }
 
-QHash<QString, QString> Tianchi::StringToMap(const QStringList& mapStrings)
+QHash<QString, QString> StringToMap(const QStringList& mapStrings)
 {
     QHash<QString, QString> ret;
 
@@ -132,17 +132,17 @@ QHash<QString, QString> Tianchi::StringToMap(const QStringList& mapStrings)
     return ret;
 }
 
-QString Tianchi::NowText()
+QString NowText()
 {
     return QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss.zzz");
 }
 
-QString Tianchi::NowText2()
+QString NowText2()
 {
     return QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
 }
 
-char Tianchi::getIDCardVerifyCode(const QByteArray& id)
+char getIDCardVerifyCode(const QByteArray& id)
 {
     char ret = '\0';
     if ( id.length() >= 17 )
@@ -164,7 +164,7 @@ char Tianchi::getIDCardVerifyCode(const QByteArray& id)
     return ret;
 }
 
-QDateTime Tianchi::DateTimefrom(const QString& s)
+QDateTime DateTimefrom(const QString& s)
 {
     QString str = s.trimmed();
 
@@ -216,7 +216,7 @@ QDateTime Tianchi::DateTimefrom(const QString& s)
     return QDateTime(QDate(year, month, day), QTime(hour, minute, second, msecond));
 }
 
-char Tianchi::typeFrom(QVariant::Type type)
+char typeFrom(QVariant::Type type)
 {
     char c = '\0';
     if ( type == QVariant::Int
@@ -256,7 +256,7 @@ char Tianchi::typeFrom(QVariant::Type type)
     return c;
 }
 
-QHash<QString, QByteArray> Tianchi::getFields(const QByteArray& fieldBytes)
+QHash<QString, QByteArray> getFields(const QByteArray& fieldBytes)
 {
     QHash<QString, QByteArray>  ret;
 
@@ -277,7 +277,7 @@ QHash<QString, QByteArray> Tianchi::getFields(const QByteArray& fieldBytes)
     return ret;
 }
 
-int Tianchi::find(const QStringList& ss, const QString& s)
+int find(const QStringList& ss, const QString& s)
 {
     int ret = -1;
     for( int i=0;i<ss.count();i++ )
@@ -291,7 +291,7 @@ int Tianchi::find(const QStringList& ss, const QString& s)
     return ret;
 }
 
-QString Tianchi::uniqueFileName(const QString& dir, const QString& fileTemplate, const QString& suffix)
+QString uniqueFileName(const QString& dir, const QString& fileTemplate, const QString& suffix)
 {
     QString fileDir    = dir;
     QString filePrefix = fileTemplate;
@@ -328,7 +328,7 @@ QString Tianchi::uniqueFileName(const QString& dir, const QString& fileTemplate,
     return ret;
 }
 
-int Tianchi::findOf(const QStringList& list, const QString& key)
+int findOf(const QStringList& list, const QString& key)
 {
     int ret = -1;
     for( int i=0;i<list.count();i++ )
@@ -342,7 +342,7 @@ int Tianchi::findOf(const QStringList& list, const QString& key)
     return ret;
 }
 
-bool Tianchi::filter(const QString& text, const QStringList& filters)
+bool filter(const QString& text, const QStringList& filters)
 {
     bool ret = filters.count() <= 0;
     foreach(QString s, filters)
@@ -360,7 +360,7 @@ bool Tianchi::filter(const QString& text, const QStringList& filters)
     return ret;
 }
 
-QDateTime Tianchi::GetComplieDateTime()
+QDateTime GetComplieDateTime()
 {
     QString DateString = __DATE__;
     QString Year  = DateString.right(4);
@@ -385,7 +385,7 @@ QDateTime Tianchi::GetComplieDateTime()
                      QTime(Hour.toInt(), Minute.toInt(), Second.toInt()));
 }
 
-QDateTime Tianchi::toDateTime(const QString& text)
+QDateTime toDateTime(const QString& text)
 {
     QDateTime ret = QDateTime();
     switch(text.length())
@@ -430,7 +430,7 @@ QDateTime Tianchi::toDateTime(const QString& text)
 }
 
 /// 分解姓名（单、复姓、英文）
-int Tianchi::splitHumanName(QString full, QString& sur, QString& real, QString& english)
+int splitHumanName(QString full, QString& sur, QString& real, QString& english)
 {
     QString surs = QTextCodec::codecForLocale()->toUnicode(
                                "欧阳\n太史\n端木\n上官\n司马\n东方\n独孤\n南宫\n万俟\n"
@@ -489,12 +489,12 @@ int Tianchi::splitHumanName(QString full, QString& sur, QString& real, QString& 
     return ret;
 }
 
-QString Tianchi::getTextByIndex(const char* strings, int index)
+QString getTextByIndex(const char* strings, int index)
 {
     QStringList ss = QTextCodec::codecForLocale()->toUnicode(strings).split("\n", QString::SkipEmptyParts);
     return ss.at(index);
 }
-bool Tianchi::loadFromFile(QString& context, const QString& filename)
+bool loadFromFile(QString& context, const QString& filename)
 {
     bool ret = false;
     QFile file(filename);

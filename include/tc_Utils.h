@@ -23,8 +23,11 @@
 
 #include "tc_qglobal.h"
 
+#ifdef QT_WIDGETS_LIB
+    #include <QMessageBox>
+#endif
+
 #include <QTextCodec>
-#include <QMessageBox>
 #include <QVariant>
 
 #include <QDateTime>
@@ -137,11 +140,15 @@ inline QString QS(const char* s)
 {
     return QTextCodec::codecForLocale()->toUnicode(s);
 }
+
+#ifdef QT_WIDGETS_LIB
 // 显示文本对话框
 inline void MsgBox(const QString& s)
 {
     QMessageBox::information(NULL, "", s);
 }
+#endif
+
 inline int     iif(bool logic, int v1, int v2=0) { return logic ? v1 : v2; }
 inline QString iif(bool logic, const QString& v1, const QString& v2="") { return logic ? v1 : v2; }
 

@@ -1,5 +1,10 @@
-QT += sql network script axcontainer
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT += sql network script 
+greaterThan(QT_MAJOR_VERSION, 4) { 
+    QT += widgets
+    win32:QT += axcontainer
+} else {
+    win32:CONFIG += axcontainer
+}
 
 #DESTDIR = bin
 TARGET = tianchi
@@ -9,8 +14,7 @@ DEFINES += TIANCHI_LIBRARY
 
 INCLUDEPATH += include
 
-LIBS += "C:/Program Files (x86)/Microsoft SDKs/Windows/v7.0A/Lib/Version.lib" \
-        "C:/Program Files (x86)/Microsoft SDKs/Windows/v7.0A/Lib/AdvAPI32.lib"
+win32:LIBS += -lversion -ladvapi32
 
 HEADERS += \
     include/IMEEngine.h \

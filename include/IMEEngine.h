@@ -17,7 +17,7 @@
 // 2013.04.10   Jonix Fu    Win8/VC2010     仅编译通过
 //
 // *********************************************************************************************************************
-/// @file IMEEngine.h Windows 下汉字转拼音库
+/// @file IMEEngine.h Windows 下汉字转拼音库(Windows only)
 // *********************************************************************************************************************
 #ifndef Tianchi_IMEEngineH
 #define Tianchi_IMEEngineH
@@ -25,7 +25,7 @@
 
 #include <QString>
 
-#if defined(_WIN32) || defined(__WINNT__)
+#ifdef _WIN32
 // 混合字符时，转换中不过滤英数符号等
 TIANCHI_EXPORT QString chineseToChars(const QString& Str, bool Tonality=false);
 // 取得多个汉字的全拼音

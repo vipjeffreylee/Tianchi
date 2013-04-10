@@ -1,8 +1,11 @@
 #include "IMEEngine.h"
-#if defined(_WIN32) || defined(__WINNT__)
+#if defined(_WIN32)
 //#include <windows.h>
 //#include <ole2.h>
 #include "msime.h"
+
+#include <qDebug>
+
 // ---------------------------------------------------------------------------------------------------------------------
 class IMEEngine
 {
@@ -90,7 +93,7 @@ HRESULT IMEEngine::SetIMEEngine(LPCWSTR msime)
             m_bLangOpen = TRUE;
 
     m_pIFELanguage->GetConversionModeCaps(&m_dwCaps);
-    wcsncpy_s(m_ImeName, msime, wcslen(m_ImeName));
+    //wcsncpy_s(m_ImeName, msime, wcslen(m_ImeName));
     return S_OK;
 }
 // ---------------------------------------------------------------------------------------------------------------------
@@ -149,7 +152,8 @@ QString chineseToPinyin(const QString& Str, bool Tonality)
         }
         if ( ! Tonality )
         {
-            const QString Initial1 = QString::fromWCharArray(L"¨¡¨¢¨£¨¤¨­¨®¨¯¨°¨¥¨¦¨§¨¨¨©¨ª¨«¨¬¨±¨²¨³¨´¨µ¨¶¨·¨¸¨¹¨º¨»¨¼¨½¨¾¨¿¨À");
+            //const QString Initial1 = QString::fromWCharArray(L"¨¡¨¢¨£¨¤¨­¨®¨¯¨°¨¥¨¦¨§¨¨¨©¨ª¨«¨¬¨±¨²¨³¨´¨µ¨¶¨·¨¸¨¹¨º¨»¨¼¨½¨¾¨¿¨À");
+            const QString Initial1 = QString::fromLocal8Bit("¨¡¨¢¨£¨¤¨­¨®¨¯¨°¨¥¨¦¨§¨¨¨©¨ª¨«¨¬¨±¨²¨³¨´¨µ¨¶¨·¨¸¨¹¨º¨»¨¼¨½¨¾¨¿¨À");
             const QString Initial2 = "aaaaooooeeeeiiiiuuuuvvvvveamnnng";
             for( int i=0;i<Initial1.length();i++ )
             {

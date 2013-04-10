@@ -23,13 +23,16 @@
 
 #include "tc_qglobal.h"
 
+#ifdef QT_WIDGETS_LIB
+    #include <QtWidgets/QWidget>
+    #include <QtGui/QCursor>
+#endif
+
 #include <QDateTime>
 #include <QObject>
 #include <QString>
 #include <QElapsedTimer>
 #include <QHash>
-#include <QtWidgets/QWidget>
-#include <QtGui/QCursor>
 
 namespace Tianchi
 {
@@ -176,6 +179,7 @@ public:
 
 };
 
+#ifdef QT_WIDGETS_LIB
 class Q_DECL_EXPORT CursorCustom
 {
 protected:
@@ -211,7 +215,7 @@ public:
     {
     }
 };
-
+#endif
 } // namespace Tianchi
 
 #endif // TIANCHI_CLASSES_H

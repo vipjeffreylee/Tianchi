@@ -29,7 +29,9 @@
 #include <ActiveQt/QAxWidget>
 #include <ActiveQt/QAxObject>
 
-#include <QTreeWidget>
+#ifdef QT_WIDGETS_LIB
+    #include <QTreeWidget>
+#endif
 
 ///@file tc_MSExcel.h 通过 OLE 接口对 Microsoft Excel 进行读写。
 
@@ -97,6 +99,7 @@ public:
     inline int rowEnd() const { return m_rowEnd; }
     inline int colEnd() const { return m_colEnd; }
 
+#ifdef QT_WIDGETS_LIB
     class TIANCHI_EXPORT Exporter
     {
     public:
@@ -118,6 +121,7 @@ public:
         int                 m_col;
         int                 m_mode;
     };
+#endif
 };
 
 } // namespace Tianchi
