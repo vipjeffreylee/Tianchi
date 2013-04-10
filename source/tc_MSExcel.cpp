@@ -232,6 +232,8 @@ bool MSExcel::usedRange()
     return ret;
 }
 
+
+#ifdef QT_WIDGETS_LIB
 MSExcel::Exporter::Exporter(QTreeWidget* view, int mode, Tianchi::MSExcel* excel, int row, int col)
 {
     m_view  = view;
@@ -297,6 +299,6 @@ int MSExcel::Exporter::exec()
     }
     return ret;
 }
-
+#endif // QT_WIDGETS_LIB
 
 } // namespace Tianchi

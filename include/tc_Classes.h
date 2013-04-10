@@ -24,8 +24,8 @@
 #include "tc_qglobal.h"
 
 #ifdef QT_WIDGETS_LIB
-    #include <QtWidgets/QWidget>
-    #include <QtGui/QCursor>
+    #include <QWidget>
+    #include <QCursor>
 #endif
 
 #include <QDateTime>

@@ -23,7 +23,7 @@
 
 #include "tc_qglobal.h"
 
-#include <QtWidgets/QComboBox>
+#include <QComboBox>
 #include <QCalendarWidget>
 
 #if defined(TIANCHI_LIBRARY)

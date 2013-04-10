@@ -30,7 +30,7 @@
 #include <ActiveQt/QAxObject>
 
 #ifdef QT_WIDGETS_LIB
-    #include <QTreeWidget>
+#include <QTreeWidget>
 #endif
 
 ///@file tc_MSExcel.h 通过 OLE 接口对 Microsoft Excel 进行读写。

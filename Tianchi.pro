@@ -3,7 +3,8 @@ greaterThan(QT_MAJOR_VERSION, 4) {
     QT += widgets
     win32:QT += axcontainer
 } else {
-    win32:CONFIG += axcontainer
+    win32:CONFIG += qaxcontainer
+    DEFINES += QT_WIDGETS_LIB
 }
 
 #DESTDIR = bin
@@ -14,7 +15,7 @@ DEFINES += TIANCHI_LIBRARY
 
 INCLUDEPATH += include
 
-win32:LIBS += -lversion -ladvapi32
+win32:LIBS += -lversion -ladvapi32 -lole32
 
 HEADERS += \
     include/IMEEngine.h \

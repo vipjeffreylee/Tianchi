@@ -35,7 +35,7 @@
 #include <QString>
 #include <QStringList>
 #include <QByteArray>
-#include <QtWidgets/QComboBox>
+#include <QComboBox>
 
 #include <QThread>
 
