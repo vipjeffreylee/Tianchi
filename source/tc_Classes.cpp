@@ -1,8 +1,8 @@
-#include "jsk_Classes.h"
-#include "jsk_Utils.h"
+#include "tc_Classes.h"
+#include "tc_Utils.h"
 
 
-namespace JSK
+namespace Tianchi
 {
 
 Player::Player()
@@ -76,7 +76,7 @@ int Player::authority(const QString& key) const
 
 void Player::setAuthorityText(const QString& value)
 {
-    QHash<QString, QString> map = JSK::StringToMap(value);
+    QHash<QString, QString> map = Tianchi::StringToMap(value);
 
     m_authority.clear();
 
@@ -93,7 +93,7 @@ void Player::setAuthorityText(const QString& value)
 
 void Player::setAuthorityText(const QStringList& value)
 {
-    QHash<QString, QString> map = JSK::StringToMap(value);
+    QHash<QString, QString> map = Tianchi::StringToMap(value);
 
     m_authority.clear();
 
@@ -137,4 +137,4 @@ bool CInvokeObject::invoke(QGenericArgument val0,
     }
 }
 
-} // namespace JSK
+} // namespace Tianchi

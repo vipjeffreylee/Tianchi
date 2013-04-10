@@ -2,8 +2,7 @@
 // Tianchi share library for Qt (C++)
 // 天池共享资源库
 // =====================================================================================================================
-// Windows 下汉字转拼音库
-// 注意：此库不支持 Windows 以外的操作系统。
+// 允许为空的日期选择控件
 // =====================================================================================================================
 // 创建/更新/维护人员:
 // Date         Name        IM              Email               Description
@@ -17,26 +16,47 @@
 // 2013.04.10   Jonix Fu    Win8/VC2010     仅编译通过
 //
 // *********************************************************************************************************************
-/// @file IMEEngine.h Windows 下汉字转拼音库
+/// @file tcv_DateEdit.h 允许为空的日期选择控件
 // *********************************************************************************************************************
-#ifndef Tianchi_IMEEngineH
-#define Tianchi_IMEEngineH
+#ifndef TIANCHI_DATEEDIT_H
+#define TIANCHI_DATEEDIT_H
+
 #include "tc_qglobal.h"
 
-#include <QString>
+#include <QtWidgets/QComboBox>
+#include <QCalendarWidget>
 
-#if defined(_WIN32) || defined(__WINNT__)
-// 混合字符时，转换中不过滤英数符号等
-TIANCHI_EXPORT QString chineseToChars(const QString& Str, bool Tonality=false);
-// 取得多个汉字的全拼音
-TIANCHI_EXPORT QString chineseToPinyin(const QString& Str, bool Tonality=false);
-// 取得多个汉字的首字母
-TIANCHI_EXPORT QString firstPinyins(const QString& HzString);
-// 取首字母
-//wchar_t GetFirstPinyin(QString HzString);
-//// 取首字母
-//QString FirstPinyin(QString HzString);
+#if defined(TIANCHI_LIBRARY)
+    class Q_DECL_EXPORT TCDateEdit : public QComboBox
+#else
+    class TCDateEdit : public QComboBox
 #endif
+//class TIANCHI_EXPORT JSKDateEdit : public QComboBox
+{
+    Q_OBJECT
 
-#endif // Tianchi_IMEEngineH
+    Q_PROPERTY(QDate date READ date WRITE setDate RESET unsetDate)
 
+private slots:
+    void calendarClicked(QDate);
+
+private:
+    QCalendarWidget *m_calendar;
+
+protected:
+    void focusInEvent(QFocusEvent *e);
+//    void focusOutEvent(QFocusEvent *e);
+    void mousePressEvent(QMouseEvent *e);
+
+public:
+    TCDateEdit(QWidget *parent = 0);
+    virtual ~TCDateEdit();
+
+    QDate date() const;
+    void setDate(QDate value);
+    void unsetDate();
+
+    inline void setDate(QDateTime value) { setDate(value.date()); }
+};
+
+#endif

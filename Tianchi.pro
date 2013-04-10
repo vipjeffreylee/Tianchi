@@ -1,16 +1,11 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2013-03-27T10:52:19
-#
-#-------------------------------------------------
 QT += sql network script axcontainer
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+#DESTDIR = bin
 TARGET = tianchi
-DESTDIR = bin
 TEMPLATE = lib
 
-DEFINES += TIANCHI
+DEFINES += TIANCHI_LIBRARY
 
 INCLUDEPATH += include
 
@@ -18,33 +13,33 @@ LIBS += "C:/Program Files (x86)/Microsoft SDKs/Windows/v7.0A/Lib/Version.lib" \
         "C:/Program Files (x86)/Microsoft SDKs/Windows/v7.0A/Lib/AdvAPI32.lib"
 
 HEADERS += \
-    include/JSKDateEdit.h \
-    include/jsk_Utils.h \
-    include/jsk_Smtp.h \
-    include/jsk_qglobal.h \
-    include/jsk_MSExcel.h \
-    include/jsk_Log.h \
-    include/jsk_json.h \
-    include/jsk_Classes.h \
-    include/jsk.h \
     include/IMEEngine.h \
-    include/DlgHeaderSetup.h \
-    source/msime.h
+    include/msime.h \
+    include/tc_qglobal.h \
+    include/tc_Smtp.h \
+    include/tc_Utils.h \
+    include/tc_MSExcel.h \
+    include/tc_json.h \
+    include/tc_Classes.h \
+    include/tc_DlgHeaderSetup.h \
+    include/tcv_DateEdit.h \
+    include/tc_LogTiny.h
 
 SOURCES += \
-    source/JSKDateEdit.cpp \
-    source/jsk_Utils.cpp \
-    source/jsk_Smtp.cpp \
-    source/jsk_MSExcel.cpp \
-    source/jsk_Log.cpp \
-    source/jsk_json.cpp \
-    source/jsk_Classes.cpp \
     source/IMEEngine.cpp \
-    source/DlgHeaderSetup.cpp
+    source/tc_DlgHeaderSetup.cpp \
+    source/tc_Classes.cpp \
+    source/tc_json.cpp \
+    source/tc_MSExcel.cpp \
+    source/tc_Smtp.cpp \
+    source/tc_Utils.cpp \
+    source/tcv_DateEdit.cpp \
+    source/tc_LogTiny.cpp
+
+FORMS += \
+    source/tc_DlgHeaderSetup.ui
 
 RESOURCES += resource/res.qrc
-
-FORMS += source/DlgHeaderSetup.ui
 
 unix:!symbian {
     maemo5 {
@@ -54,5 +49,4 @@ unix:!symbian {
     }
     INSTALLS += target
 }
-
 

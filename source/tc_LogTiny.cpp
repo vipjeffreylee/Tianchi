@@ -5,27 +5,27 @@
 #include <QDateTime>
 #include <QTextStream>
 
-#include "jsk_Log.h"
+#include "tc_LogTiny.h"
 
-namespace JSK
+namespace Tianchi
 {
-/**
- * @brief JSK::Log 全局 Log4Qt 实例，可在应用程序中直接使用。
- */
-Log4Qt Log;
+///**
+// * @brief Tianchi::Log 全局 Log4Qt 实例，可在应用程序中直接使用。
+// */
+//Log4Qt Log;
 
-void Log4Qt::setAppFile(const QString& AppFile)
+void LogTiny::setAppFile(const QString& AppFile)
 {
     QFileInfo fi(AppFile);
     m_FileName = fi.absolutePath() + QDir::separator() + fi.baseName() + ".log";
 }
 
-void Log4Qt::setLogFile(const QString& LogFile)
+void LogTiny::setLogFile(const QString& LogFile)
 {
     m_FileName = LogFile;
 }
 
-void Log4Qt::write(const QString& S, const QString& SourceName, int SourceLine)
+void LogTiny::write(const QString& S, const QString& SourceName, int SourceLine)
 {
     if ( ! m_FileName.isEmpty() )
     {
@@ -57,5 +57,4 @@ void Log4Qt::write(const QString& S, const QString& SourceName, int SourceLine)
         }
     }
 }
-
 };

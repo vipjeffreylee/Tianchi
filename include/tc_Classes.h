@@ -1,7 +1,27 @@
-#ifndef JSK_CLIMAX_H
-#define JSK_CLIMAX_H
+// *********************************************************************************************************************
+// Tianchi share library for Qt (C++)
+// 天池共享资源库
+// =====================================================================================================================
+// 一些常用的小类
+// =====================================================================================================================
+// 创建/更新/维护人员:
+// Date         Name        IM              Email               Description
+// ---------------------------------------------------------------------------------------------------------------------
+// 2013.04.10   Jonix Fu    QQ:23552351     jonix@qtcn.org      初创
+//
+// =====================================================================================================================
+// Confirmation/确认:
+// Date         Name        OS/Compiler     Description
+// ---------------------------------------------------------------------------------------------------------------------
+// 2013.04.10   Jonix Fu    Win8/VC2010     仅编译通过
+//
+// *********************************************************************************************************************
+/// @file tc_Classes.h 一些常用的小类
+// *********************************************************************************************************************
+#ifndef TIANCHI_CLASSES_H
+#define TIANCHI_CLASSES_H
 
-#include "jsk_qglobal.h"
+#include "tc_qglobal.h"
 
 #include <QDateTime>
 #include <QObject>
@@ -11,9 +31,9 @@
 #include <QtWidgets/QWidget>
 #include <QtGui/QCursor>
 
-namespace JSK
+namespace Tianchi
 {
-#if defined(JSK_LIBRARY)
+#if defined(TIANCHI_LIBRARY)
     class Q_DECL_EXPORT Player : public QObject
 #else
     class Player : public QObject
@@ -143,7 +163,7 @@ private:
     QByteArray  m_method;
 };
 
-#if defined(JSK_LIBRARY)
+#if defined(TIANCHI_LIBRARY)
     class Q_DECL_EXPORT Climax : public QObject
 #else
     class Climax : public QObject
@@ -192,6 +212,6 @@ public:
     }
 };
 
-} // namespace JSK
+} // namespace Tianchi
 
-#endif // JSK_CLIMAX_H
+#endif // TIANCHI_CLASSES_H

@@ -1,9 +1,9 @@
-#include "jsk_msexcel.h"
-#include "jsk_Utils.h"
+#include "tc_msexcel.h"
+#include "tc_Utils.h"
 
 #include <QList>
 
-namespace JSK
+namespace Tianchi
 {
 
 MSExcel::MSExcel()
@@ -232,7 +232,7 @@ bool MSExcel::usedRange()
     return ret;
 }
 
-MSExcel::Exporter::Exporter(QTreeWidget* view, int mode, JSK::MSExcel* excel, int row, int col)
+MSExcel::Exporter::Exporter(QTreeWidget* view, int mode, Tianchi::MSExcel* excel, int row, int col)
 {
     m_view  = view;
     m_mode  = mode;
@@ -255,7 +255,7 @@ int MSExcel::Exporter::exec()
     QTreeWidgetItem* header = m_view->headerItem();
     for( int i=0;i<header->columnCount();i++ )
     {
-        m_excel->cellAlign(m_row, m_col, JSK::MSExcel::xlCenter, JSK::MSExcel::xlCenter);
+        m_excel->cellAlign(m_row, m_col, Tianchi::MSExcel::xlCenter, Tianchi::MSExcel::xlCenter);
         m_excel->write(m_row, m_col++, header->text(i));
     }
     QList<QTreeWidgetItem*> list;
@@ -299,4 +299,4 @@ int MSExcel::Exporter::exec()
 }
 
 
-} // namespace JSK
+} // namespace Tianchi

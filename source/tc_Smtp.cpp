@@ -1,8 +1,8 @@
-#include "jsk_Smtp.h"
+#include "tc_Smtp.h"
 
 #include <QtNetwork>
 
-JSK::Smtp::Smtp(const QString& host, int port)
+Tianchi::Smtp::Smtp(const QString& host, int port)
 {
     setHost(host, port);
 }
@@ -53,7 +53,7 @@ void smtpCommunication(QTcpSocket & socket)
     qDebug() << "send email ok." << endl;
 }
 
-bool JSK::Smtp::send()
+bool Tianchi::Smtp::send()
 {
     //bool ret = false;
     QTcpSocket socket;

@@ -1,8 +1,8 @@
-#include "JSKDateEdit.h"
+#include "tcv_DateEdit.h"
 
 #include <QMouseEvent>
 
-JSKDateEdit::JSKDateEdit(QWidget *parent)
+TCDateEdit::TCDateEdit(QWidget *parent)
     : QComboBox(parent)
 {
     setEditable(true);
@@ -18,12 +18,12 @@ JSKDateEdit::JSKDateEdit(QWidget *parent)
     connect(m_calendar, SIGNAL(clicked(QDate)), this, SLOT(calendarClicked(QDate)));
 }
 
-JSKDateEdit::~JSKDateEdit()
+TCDateEdit::~TCDateEdit()
 {
     delete m_calendar;
 }
 
-void JSKDateEdit::focusInEvent( QFocusEvent *e )
+void TCDateEdit::focusInEvent(QFocusEvent *e)
 {
     //屏蔽基类事件
 }
@@ -77,7 +77,7 @@ void JSKDateEdit::focusOutEvent(QFocusEvent *e)
     }
 }
 */
-void JSKDateEdit::mousePressEvent(QMouseEvent *e)
+void TCDateEdit::mousePressEvent(QMouseEvent *e)
 {
     //获取鼠标当前坐标及全局坐标
     int x = e->x();
@@ -94,7 +94,7 @@ void JSKDateEdit::mousePressEvent(QMouseEvent *e)
     m_calendar->show();
 }
 
-void JSKDateEdit::calendarClicked(QDate _date)
+void TCDateEdit::calendarClicked(QDate _date)
 {
     //日历的单击信号处理函数
 
@@ -112,7 +112,7 @@ void JSKDateEdit::calendarClicked(QDate _date)
     m_calendar->hide();
 }
 
-QDate JSKDateEdit::date() const
+QDate TCDateEdit::date() const
 {
     QString str = currentText().trimmed();
 
@@ -158,12 +158,12 @@ QDate JSKDateEdit::date() const
     return QDate(year, month, day);
 }
 
-void JSKDateEdit::setDate(QDate value)
+void TCDateEdit::setDate(QDate value)
 {
     setEditText(value.year() > 1900 ? value.toString("yyyy-MM-dd") : "");
 }
 
-void JSKDateEdit::unsetDate()
+void TCDateEdit::unsetDate()
 {
     setEditText("");
 }

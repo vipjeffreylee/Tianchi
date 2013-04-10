@@ -1,5 +1,5 @@
-#include "DlgHeaderSetup.h"
-#include "ui_DlgHeaderSetup.h"
+#include "tc_DlgHeaderSetup.h"
+#include "ui_tc_DlgHeaderSetup.h"
 
 DlgHeaderSetup::DlgHeaderSetup(QWidget *parent) :
     QDialog(parent),
